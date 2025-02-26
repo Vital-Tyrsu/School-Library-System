@@ -18,8 +18,22 @@ function Catalog() {
   );
 
   const handleBorrow = (bookId) => {
-    console.log(`Borrowing book with ID: ${bookId}`);
-    // Later: POST to /api/borrowing/
+    // For now, assume a student ID (we’ll handle authentication later)
+    fetch(`http://127.0.0.1:8000/api/books/${bookId}/borrow/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ student_id: 1, due_date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Book borrowed:', data);
+        // Refresh books list
+        fetch('http://127.0.0.1:8000/api/books/')
+          .then((response) => response.json())
+          .then((newData) => setBooks(newData))
+          .catch((error) => console.error('Error refreshing books:', error));
+      })
+      .catch((error) => console.error('Error borrowing book:', error));
   };
 
   return (

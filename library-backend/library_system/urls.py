@@ -3,6 +3,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('library.urls')),  # Includes the library app's URLs under /api/
-    path('', include('library.urls')),  # Add this to handle the root URL
+    path('api/', include('library.urls')),
+    path('', include('library.urls')),  # Handle root URL (optional)
 ]
