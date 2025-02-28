@@ -12,9 +12,8 @@ class BookSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'author', 'genre', 'isbn', 'status', 'publication_year']
 
 class BorrowingRecordSerializer(serializers.ModelSerializer):
-    student = StudentSerializer(read_only=True)  # Show student details
-    book = BookSerializer(read_only=True)        # Show book details
-
+    student = StudentSerializer(read_only=True)
+    book = BookSerializer(read_only=True)
     class Meta:
         model = BorrowingRecord
         fields = ['id', 'student', 'book', 'borrow_date', 'due_date', 'return_date', 'overdue_fee']

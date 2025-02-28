@@ -10,5 +10,5 @@ router.register(r'borrowing', BorrowingRecordViewSet, basename='borrowing')
 urlpatterns = [
     path('', include(router.urls)),
     path('books/<int:pk>/borrow/', BookViewSet.as_view({'post': 'borrow_book'}), name='borrow_book'),
-    path('borrowing/<int:pk>/return/', BookViewSet.as_view({'post': 'return_book'}), name='return_book'),
+    path('borrowing/<int:pk>/return/', BorrowingRecordViewSet.as_view({'post': 'return_book'}), name='return_book'),
 ]
