@@ -17,7 +17,7 @@ We are building this system with **full control over the development process**, 
 
 ### 🛠️ Tech Stack  
 
-- **Frontend:** HTML, CSS, or React (to be decided based on performance and UI requirements).  
+- **Frontend:** React (decided based on performance and UI requirements).  
 - **Backend:** Node.js with Express or Python with Flask/Django (final decision pending).  
 - **Database:** Azure SQL Database for structured data storage.  
 - **Authentication:** Azure Active Directory for secure login and access control.  
