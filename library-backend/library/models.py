@@ -29,3 +29,15 @@ class BorrowingRecord(models.Model):
 
     def __str__(self):
         return f"{self.student.name or self.student.email} - {self.book.title}"
+
+
+class Reservation(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    reservation_date = models.DateField(auto_now_add=True)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    status = models.CharField(max_length=20, choices=[('Active', 'Active'), ('Completed', 'Completed'), ('Cancelled', 'Cancelled')], default='Active')
+
+    def __str__(self):
+        return f"{self.student.name} - {self.book.title}"
